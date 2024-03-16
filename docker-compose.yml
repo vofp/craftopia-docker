@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  dedicated-server:
+    image: kagurazakanyaa/craftopia:latest
+    build: # only use in test
+      context: .
+    restart: unless-stopped
+    network_mode: bridge
+    ports:
+      - 6587:6587/udp
+    environment:
+      - WORLD_NAME=NoName
+      - WORLD_DIFFICULTY=1
+      - WORLD_GAME_MODE=1
+      - HOST_PORT=6587
+      - HOST_MAX_PLAYER_NUMBER=32
+      - HOST_USE_PASSWORD=0
+      - HOST_SERVER_PASSWORD=00000000
+      - SAVE_AUTO_SAVE_SEC=300
+      - SAVE_AUTO_SAVE_PER_HOUR=1
+      - FORCE_UPDATE=false
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/opt/craftopia/DedicatedServerSave
