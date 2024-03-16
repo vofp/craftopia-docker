@@ -1,6 +1,11 @@
 FROM cm2network/steamcmd:steam
 
 ARG DEBIAN_FRONTEND=noninteractive
+USER root
+# fix save
+RUN apt-get update && apt-get install libsqlite3-0 -y && apt-get clean
+
+USER steam
 WORKDIR /opt/craftopia
 
 RUN /home/steam/steamcmd/steamcmd.sh +force_install_dir "/opt/craftopia" +login anonymous +app_update 1670340 validate +quit
