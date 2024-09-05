@@ -12,8 +12,15 @@ jobs:
       - name: Free Disk Space (Ubuntu)
         uses: easimon/maximize-build-space@v10
         with:
-          remove-android: "true"
+          build-mount-path: /var/lib/docker/
           remove-dotnet: "true"
+          remove-android: "true"
+          remove-haskell: "true"
+          remove-codeql: "true"
+          remove-docker-images: "true"
+
+      - name: Restart docker
+        run: sudo service docker restart
 
       - name: Set env
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
