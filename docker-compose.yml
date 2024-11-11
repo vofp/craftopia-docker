@@ -3,6 +3,7 @@ services:
     image: kagurazakanyaa/craftopia:latest
     build: # only use in test
       context: .
+      network: host
     restart: unless-stopped
     network_mode: bridge
     ports:
@@ -18,6 +19,9 @@ services:
       - SAVE_AUTO_SAVE_SEC=300
       - SAVE_AUTO_SAVE_PER_HOUR=1
       - FORCE_UPDATE=false
+      - ENABLE_MOD=false
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./data:/opt/craftopia/DedicatedServerSave
+      - ./gamesave:/opt/craftopia/DedicatedServerSave
+      - ./modfile:/opt/craftopia/BepInEx/plugins
+      - ./modconfig:/opt/craftopia/BepInEx/config

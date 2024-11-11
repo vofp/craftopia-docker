@@ -11,6 +11,7 @@ Craftopia dedicated server with docker
 ## Environments
 
 The variables in the table below valid during initialization, if you need to make it valid, please recreate the container.
+
 | Variable                | Describe                                                      | Default Values | Allowed Values |
 |-------------------------|---------------------------------------------------------------|----------------|----------------|
 | WORLD_NAME              | world name                                                    | NoName         | string         |
@@ -23,13 +24,16 @@ The variables in the table below valid during initialization, if you need to mak
 | SAVE_AUTO_SAVE_SEC      | autoSavePer ** second, to disable, set to -1                  | 300            | integer        |
 | SAVE_AUTO_SAVE_PER_HOUR | enable autoSavePerHour(1- True / 0- False)                    | 1              | 0/1            |
 | FORCE_UPDATE            | Whether the server should be update each time start.          | false          | true/false     |
+| ENABLE_MOD              | Whether the server should be enable BepInEx framework.        | false          | true/false     |
 
 ## Volumes
 
-|Path                                 |Describe    |
-|-------------------------------------|------------|
-|`/opt/craftopia/DedicatedServerSave` |Game saves. |
+|Path                                 |Describe          |
+|-------------------------------------|------------------|
+|`/opt/craftopia/DedicatedServerSave` |Game saves.       |
+|`/opt/craftopia/BepInEx/plugins`     |Game mod plugins. |
+|`/opt/craftopia/BepInEx/config`      |Game mod config.  |
 
 NOTE: If you use bind instead of volume to mount, you need to manually change the volume owner to uid=1000.
-In the case of the docker-compose.yml of the example, you need to execute `chown -R 1000:1000 ./data`
+In the case of the docker-compose.yml of the example, you need to execute `chown -R 1000:1000 ./gamesave ./modfile ./modconfig`
 Please make sure the permissions and owners of the pak file you placed in the mods directory are correct.

@@ -33,7 +33,11 @@ if [[ -n $SAVE_AUTO_SAVE_PER_HOUR ]]; then
 fi
 
 if [ $# -eq 0 ]; then
-    /opt/craftopia/Craftopia.x86_64
+    if [[ -n $ENABLE_MOD ]] && [[ $ENABLE_MOD == "true" ]]; then
+        /opt/craftopia/run_bepinex.sh /opt/craftopia/Craftopia.x86_64
+    else
+        /opt/craftopia/Craftopia.x86_64
+    fi
 else
     exec "$@"
 fi
