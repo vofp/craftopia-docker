@@ -22,6 +22,6 @@ services:
       - ENABLE_MOD=false
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./gamesave:/opt/craftopia/DedicatedServerSave
-      - ./modfile:/opt/craftopia/BepInEx/plugins
-      - ./modconfig:/opt/craftopia/BepInEx/config
+      - ${data}/gamesave:/opt/craftopia/DedicatedServerSave
+      - ${data}/modfile:/opt/craftopia/BepInEx/plugins
+      - ${data}/modconfig:/opt/craftopia/BepInEx/config
