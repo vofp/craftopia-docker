@@ -11,7 +11,7 @@ FROM cm2network/steamcmd:steam
 ARG DEBIAN_FRONTEND=noninteractive
 USER root
 # fix save and bepinex
-RUN apt-get update && apt-get install libsqlite3-0 file -y && apt-get clean
+RUN apt-get update && apt-get install build-essential libsqlite3-0 file -y && apt-get clean
 
 USER steam
 WORKDIR /opt/craftopia
