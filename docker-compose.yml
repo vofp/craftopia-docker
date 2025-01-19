@@ -1,6 +1,5 @@
 services:
   dedicated-server:
-    image: kagurazakanyaa/craftopia:latest
     build: # only use in test
       context: .
       network: host
